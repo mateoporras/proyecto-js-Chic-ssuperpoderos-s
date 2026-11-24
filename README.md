@@ -1,12 +1,9 @@
-# proyecto-js-Chic-ssuperpoderos-s
-Sistema de gestión de préstamos para biblioteca escolar desarrollado en JavaScript como proyecto final de ADSO (SENA). Permite administrar libros, usuarios y préstamos, consultar disponibilidad y detectar entregas vencidas
-
 # BiblioEscolar — Gestión de Préstamos de Biblioteca
 
 ## Equipo
 - Mateo Porras Jiménez · [@mateoporras](https://github.com/mateoporras)
-- Andrés Callejas Jiménez · [@ProbablyWasted]
-- Dayana Marulanda · [@dmarulandaecheverry-ship-it]
+- Andrés Callejas Jiménez · [@ProbablyWasted](https://github.com/ProbablyWasted)
+- Dayana Marulanda · [@dmarulandaecheverry-ship-it](https://github.com/dmarulandaecheverry-ship-it)
 
 ## El problema
 Las bibliotecas escolares suelen llevar el control de libros, estudiantes y préstamos de forma manual o desorganizada, lo que dificulta saber qué ejemplares están disponibles y quién tiene entregas pendientes. Esta aplicación web resuelve ese problema brindando al encargado de la biblioteca una herramienta rápida y centralizada para gestionar el inventario bibliográfico, registrar préstamos y detectar devoluciones vencidas sin perder trazabilidad.
