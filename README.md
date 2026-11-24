@@ -5,8 +5,8 @@ Sistema de gestión de préstamos para biblioteca escolar desarrollado en JavaSc
 
 ## Equipo
 - Mateo Porras Jiménez · [@mateoporras](https://github.com/mateoporras)
-- Andrés Callejas Jiménez · [@dmarulandaecheverry-ship-it]
-- Dayana Marulanda · [@ProbablyWasted]
+- Andrés Callejas Jiménez · [@ProbablyWasted]
+- Dayana Marulanda · [@dmarulandaecheverry-ship-it]
 
 ## El problema
 Las bibliotecas escolares suelen llevar el control de libros, estudiantes y préstamos de forma manual o desorganizada, lo que dificulta saber qué ejemplares están disponibles y quién tiene entregas pendientes. Esta aplicación web resuelve ese problema brindando al encargado de la biblioteca una herramienta rápida y centralizada para gestionar el inventario bibliográfico, registrar préstamos y detectar devoluciones vencidas sin perder trazabilidad.
