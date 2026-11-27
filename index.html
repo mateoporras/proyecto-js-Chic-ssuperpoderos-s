@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7e1524">
+  <title>BiblioEscolar · Biblioteca escolar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="cabecera-interior">
+      <div class="marca">
+        <span class="escudo">B</span>
+        <div class="marca-texto">
+          <h1>BiblioEscolar</h1>
+          <p class="subtitulo">Biblioteca escolar · Control de préstamos</p>
+        </div>
+      </div>
+      <nav class="navegacion">
+        <button id="btnLibros" class="activo">Libros</button>
+        <button id="btnUsuarios">Usuarios</button>
+        <button id="btnPrestamos">Préstamos</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenido">
+    <section id="seccionLibros" class="panel">
+      <div class="panel-cabecera">
+        <h2>Catálogo de libros</h2>
+        <p class="panel-texto">Registra cada ejemplar con su ficha completa. La búsqueda, los filtros y los totales se actualizan solos.</p>
+      </div>
+
+      <form id="formLibro" novalidate>
+        <div class="campo">
+          <label for="titulo">Título</label>
+          <input id="titulo" autocomplete="off">
+          <small class="error" id="error-titulo"></small>
+        </div>
+        <div class="campo">
+          <label for="autor">Autor</label>
+          <input id="autor" autocomplete="off">
+          <small class="error" id="error-autor"></small>
+        </div>
+        <div class="campo">
+          <label for="categoria">Categoría</label>
+          <select id="categoria">
+            <option value="">Elige una categoría</option>
+            <option>Novela</option>
+            <option>Cuento</option>
+            <option>Poesía</option>
+            <option>Ciencia</option>
+            <option>Historia</option>
+            <option>Infantil</option>
+            <option>Texto escolar</option>
+          </select>
+          <small class="error" id="error-categoria"></small>
+        </div>
+        <div class="campo">
+          <label for="anio">Año</label>
+          <input id="anio" type="number" min="1900" max="2026" placeholder="Ej: 2018">
+          <small class="error" id="error-anio"></small>
+        </div>
+        <div class="acciones-formulario">
+          <button type="submit" class="btn-primario">Agregar libro</button>
+        </div>
+      </form>
+
+      <div class="barra">
+        <input id="busqueda" placeholder="Buscar por título o autor" autocomplete="off">
+        <select id="filtroCategoria">
+          <option value="">Todas las categorías</option>
+          <option>Novela</option>
+          <option>Cuento</option>
+          <option>Poesía</option>
+          <option>Ciencia</option>
+          <option>Historia</option>
+          <option>Infantil</option>
+          <option>Texto escolar</option>
+        </select>
+        <button id="btnDisponibles">Solo disponibles</button>
+        <button id="btnOrdenar">Ordenar A-Z</button>
+      </div>
+
+      <div class="tabla">
+        <table>
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Autor</th>
+              <th>Categoría</th>
+              <th>Año</th>
+              <th>Estado</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tablaLibros"></tbody>
+        </table>
+      </div>
+
+      <p id="contadorLibros" class="contador"></p>
+
+      <div class="totales">
+        <h3>Total por categoría</h3>
+        <ul id="totalCategorias"></ul>
+      </div>
+    </section>
+
+    <section id="seccionUsuarios" class="panel oculto">
+      <div class="panel-cabecera">
+        <h2>Usuarios</h2>
+        <p class="panel-texto">Estudiantes y docentes autorizados para solicitar préstamos.</p>
+      </div>
+
+      <form id="formUsuario" novalidate>
+        <div class="campo">
+          <label for="nombreLector">Nombre completo</label>
+          <input id="nombreLector" autocomplete="off">
+          <small class="error" id="error-nombreLector"></small>
+        </div>
+        <div class="campo">
+          <label for="documento">Documento</label>
+          <input id="documento" inputmode="numeric" autocomplete="off">
+          <small class="error" id="error-documento"></small>
+        </div>
+        <div class="campo">
+          <label for="grado">Grado</label>
+          <input id="grado" placeholder="Ej: 10-2" autocomplete="off">
+          <small class="error" id="error-grado"></small>
+        </div>
+        <div class="acciones-formulario">
+          <button type="submit" class="btn-primario">Agregar usuario</button>
+        </div>
+      </form>
+
+      <div class="tabla">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Documento</th>
+              <th>Grado</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tablaUsuarios"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="seccionPrestamos" class="panel oculto">
+      <div class="panel-cabecera">
+        <h2>Préstamos</h2>
+        <p class="panel-texto">Asocia un libro disponible a un usuario y define la fecha límite de entrega.</p>
+      </div>
+
+      <form id="formPrestamo" novalidate>
+        <div class="campo">
+          <label for="libro">Libro</label>
+          <select id="libro">
+            <option value="">Elige un libro</option>
+          </select>
+          <small class="error" id="error-libro"></small>
+        </div>
+        <div class="campo">
+          <label for="usuario">Usuario</label>
+          <select id="usuario">
+            <option value="">Elige un usuario</option>
+          </select>
+          <small class="error" id="error-usuario"></small>
+        </div>
+        <div class="campo">
+          <label for="fechaDevolucion">Fecha límite</label>
+          <input id="fechaDevolucion" type="date">
+          <small class="error" id="error-fechaDevolucion"></small>
+        </div>
+        <div class="acciones-formulario">
+          <button type="submit" class="btn-primario">Prestar</button>
+        </div>
+      </form>
+
+      <div class="barra barra-prestamos">
+        <button id="btnVencidos">Ver vencidos</button>
+      </div>
+
+      <div class="tabla">
+        <table>
+          <thead>
+            <tr>
+              <th>Libro</th>
+              <th>Usuario</th>
+              <th>Prestado</th>
+              <th>Fecha límite</th>
+              <th>Estado</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tablaPrestamos"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>BiblioEscolar · Proyecto final ADSO · Mateo Porras, Andrés Callejas y Dayana Marulanda</p>
+  </footer>
+
+  <script src="js/datos.js"></script>
+  <script src="js/filtros.js"></script>
+  <script src="js/formulario.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
